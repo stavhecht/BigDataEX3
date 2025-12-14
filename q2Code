@@ -8,11 +8,11 @@ if __name__ == "__main__":
 
     conf = SparkConf().setAppName("python-word-count")
     sc = SparkContext(conf=conf)
-    text_file = sc.textFile("hdfs://" + sys.argv[1]).cache()
 
 
     # Read files from HDFS
-    text_file = sc.textFile("hdfs://" + sys.argv[1])
+    text_file = sc.textFile("hdfs://" + sys.argv[1]).cache()
+
 
     # Break pipeline into RDDs for debugging
     rdd1 = text_file.flatMap(lambda line: line.split(" "))
